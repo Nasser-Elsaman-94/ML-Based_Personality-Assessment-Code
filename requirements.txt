@@ -1,0 +1,10 @@
+gunicorn
+numpy
+scikit-learn
+flask==1.1.1
+flask_wtf
+wtforms
+joblib
+gspread
+oauth2client
+pickle
