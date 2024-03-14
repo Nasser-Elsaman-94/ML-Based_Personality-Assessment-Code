@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/static/datadriven.css') }}">
+    <style>
+
+        li::after {
+
+        font-weight: bold; /* Make the numbers bold */
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #dbdbdb;
+        }
+
+        #submit {
+            background-color: #c61010; /* Replace with your desired color code or name */
+            color: #f0e5e5; /* Text color, replace with your preferred color */
+            width: 150px; /* Adjust the width to your desired size */
+            height: 60px; /* Adjust the height to your desired size */
+            font-size: 19px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Add a smooth transition effect */
+
+        }
+
+        #submit:hover {
+            background-color: #990000; /* Change the background color on hover */
+            color: #ffffff; /* Change the text color on hover */
+        }
+
+        #submit:active {
+            background-color: #660000; /* Change the background color when the button is clicked */
+        }
+
+
+        .center-container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .radio-container {
+        text-align: center;
+        }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s, opacity 0.3s; /* Add a transition effect */
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+        }
+
+    </style>
+    <title>Data-Driven | Personality Assessment </title>
+</head>
+<body>
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <div class="center-container">
+        <h1 align = "center">Data-Driven | Personality Assessment </h1></br>
+
+        <form action="/data-driven" method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
+            <ol start="1">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center" align = "center">{{ form.question1.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question1" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question1" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question1" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question1" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question1" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question2.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question2" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question2" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question2" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question2" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question2" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question3.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question3" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question3" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question3" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question3" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question3" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question4.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question4" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question4" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question4" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question4" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question4" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question5.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question5" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question5" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question5" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question5" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question5" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question6.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question6" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question6" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question6" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question6" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question6" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question7.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question7" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question7" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question7" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question7" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question7" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question8.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question8" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question8" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question8" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question8" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question8" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question9.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question9" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question9" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question9" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question9" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question9" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question10.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question10" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question10" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question10" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question10" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question10" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question11.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question11" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question11" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question11" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question11" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question11" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question12.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question12" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question12" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question12" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question12" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question12" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question13.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question13" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question13" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question13" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question13" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question13" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question14.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question14" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question14" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question14" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question14" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question14" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question15.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question15" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question15" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question15" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question15" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question15" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question16.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question16" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question16" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question16" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question16" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question16" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question17.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question17" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question17" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question17" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question17" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question17" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question18.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question18" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question18" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question18" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question18" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question18" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question19.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question19" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question19" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question19" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question19" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question19" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question20.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question20" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question20" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question20" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question20" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question20" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question21.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question21" required type="radio" value="1"><label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question21" required type="radio" value="2"><label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question21" required type="radio" value="3"><label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question21" required type="radio" value="4"><label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question21" required type="radio" value="5"><label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question22.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question22" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question22" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question22" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question22" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question22" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question23.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question23" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question23" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question23" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question23" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question23" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question24.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question24" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question24" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question24" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question24" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question24" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question25.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question25" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question25" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question25" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question25" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question25" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question26.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question26" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question26" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question26" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question26" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question26" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question27.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question27" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question27" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question27" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question27" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question27" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question28.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question28" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question28" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question28" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question28" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question28" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question29.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question29" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question29" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question29" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question29" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question29" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question30.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question30" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question30" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question30" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question30" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question30" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question31.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question31" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question31" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question31" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question31" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question31" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question32.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question32" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question32" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question32" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question32" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question32" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question33.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question33" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question33" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question33" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question33" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question33" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question34.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question34" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question34" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question34" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question34" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question34" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question35.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question35" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question35" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question35" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question35" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question35" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question36.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question36" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question36" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question36" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question36" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question36" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question37.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question37" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question37" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question37" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question37" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question37" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question38.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question38" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question38" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question38" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question38" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question38" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question39.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question39" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question39" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question39" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question39" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question39" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question40.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question40" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question40" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question40" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question40" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question40" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question41.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question41" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question41" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question41" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question41" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question41" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question42.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question42" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question42" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question42" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question42" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question42" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question43.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question43" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question43" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question43" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question43" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question43" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question44.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question44" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question44" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question44" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question44" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question44" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question45.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question45" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question45" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question45" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question45" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question45" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question46.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question46" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question46" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question46" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question46" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question46" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question47.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question47" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question47" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question47" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question47" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question47" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question48.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question48" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question48" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question48" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question48" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question48" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question49.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question49" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question49" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question49" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question49" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question49" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    <div class="radio-container">
+        <li><b><h4 align = "center">{{ form.question50.label }}</h4></b></li>
+        <span class="error"> </span>
+        <input id="q-0" name="question50" required type="radio" value="1"> <label for="q-0"> Strongly Disagree - لا أوافق بشدة </label>
+        <input id="q-1" name="question50" required type="radio" value="2"> <label for="q-1"> Disagree - لا أوافق </label>
+        <input id="q-2" name="question50" required type="radio" value="3"> <label for="q-2"> Neutral - مُحايد </label>
+        <input id="q-3" name="question50" required type="radio" value="4"> <label for="q-3"> Agree - أوافق </label>
+        <input id="q-4" name="question50" required type="radio" value="5"> <label for="q-4"> Strongly Agree - أوافق بشدة </label>
+    </div><hr width="500px;" color="red" size="3" align="center">
+
+    </ol>
+
+    <br>
+    <div> <h4 align = "center">
+        <input id="submit" name="submit" type="submit" value="Predict"> </h4>
+
+    </div>
+    </form>
+
+
+    </div>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+    <script>
+    let mybutton = document.getElementById("myBtn");
+
+    window.onscroll = function () {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.opacity = "0";
+            setTimeout(() => {
+                mybutton.style.display = "none";
+            }, 300); // Delay hiding the button to allow the transition effect
+        }
+    }
+
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+</body>
+</html>
