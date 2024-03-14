@@ -3,7 +3,7 @@ from wtforms import SubmitField, RadioField
 from wtforms.validators import InputRequired
 
 
-class MB_Form(FlaskForm):
+class DD_Form(FlaskForm):
     question1 = RadioField(
         'Are you the life of the party (Active person)? - هل أنت شخص نشيط للغاية؟',
         choices=[(1, 'Strongly Disagree'), (2, 'Disagree'), (3, 'Neutral'), (4, 'Agree'), (5, 'Strongly Agree')],
