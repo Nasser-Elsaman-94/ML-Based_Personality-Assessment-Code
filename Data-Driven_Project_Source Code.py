@@ -5,7 +5,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 import pickle
 from pickle import GET, load
-from forms_modelbased import MB_Form
+from forms_datadriven import DD_Form
 from flask import Flask, render_template, url_for, redirect, request
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
@@ -25,9 +25,9 @@ app = Flask(__name__)
 app.config ["SECRET_KEY"] = "use_your_secret_key_here!!!"
 
 
-@app.route('/model-based', methods=["GET", "POST"])
-def modelbasedfunc():
-    form = MB_Form()
+@app.route('/data-driven', methods=["GET", "POST"])
+def datadrivenfunc():
+    form = DD_Form()
     formValues_list = []  # Initialize the list
     prediction= None
     predicted_label = None
@@ -61,9 +61,10 @@ def modelbasedfunc():
 
         # Append data to the sheet
         data_to_append = formValues_list + [predicted_label]
-        sheet.append_row(data_to_append)
-
-    return render_template('modelbased.html', form=form, formValues_list=formValues_list, predicted_label=predicted_label)
+        sheet.append_row (data_to_append)
+        return render_template('assessmentresult.html', form=form, formValues_list=formValues_list, predicted_label=predicted_label)
+        
+    return render_template('datadriven.html', form=form)
 
 # Rest of your Flask app code
 
@@ -75,13 +76,19 @@ def home():
 def first_wave():
     return render_template("rulebased.html")
 
-@app.route('/model-based')
+@app.route('/data-driven')
 def second_wave():
-    return render_template ("modelbased.html")
+    return render_template ("datadriven.html")
+
+@app.route('/assessment-result')
+def results():
+    return render_template ("assessmentresult.html")
 
 @app.route('/gpt')
 def third_wave():
     return render_template ("gpt.html")
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
